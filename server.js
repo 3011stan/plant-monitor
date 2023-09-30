@@ -24,6 +24,12 @@ app.post('/sensor', async (req, res) => {
   res.json(sensorData);
 });
 
+app.get('/', async (req, res) => {
+  const registries = await prisma.sensorData.findMany();
+
+  res.json(registries);
+});
+
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server running on http://localhost:3000');
 });
